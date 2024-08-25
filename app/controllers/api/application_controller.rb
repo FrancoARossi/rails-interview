@@ -9,4 +9,12 @@ class Api::ApplicationController < ActionController::Base
   def record_not_found(error)
     render json: { error: error.message }, status: :not_found
   end
+
+  def render_success(data, status = :ok)
+    render json: data, status:
+  end
+
+  def render_error(error, status = :not_found)
+    render json: { error: }, status:
+  end
 end
