@@ -5,15 +5,15 @@ module Api
     # GET /api/todolists
     def index
       @todo_lists = TodoList.all
-      
+
       respond_to do |format|
-        format.json { render json: @todo_lists.to_json }
+        format.json { render json: @todo_lists.as_json }
       end
     end
 
     def show
       respond_to do |format|
-        format.json { render json: @todo_list.to_json }
+        format.json { render json: @todo_list.as_json }
       end
     end
 
@@ -22,7 +22,7 @@ module Api
 
       if @todo_list.save
         respond_to do |format|
-          format.json { render json: @todo_list.to_json }
+          format.json { render json: @todo_list.as_json }
         end
       else
         respond_to do |format|
@@ -34,7 +34,7 @@ module Api
     def update
       if @todo_list.update(todo_list_params)
         respond_to do |format|
-          format.json { render json: @todo_list.to_json }
+          format.json { render json: @todo_list.as_json }
         end
       else
         respond_to do |format|
@@ -46,7 +46,7 @@ module Api
     def destroy
       if @todo_list.destroy
         respond_to do |format|
-          format.json { render json: @todo_list.to_json }
+          format.json { render json: @todo_list.as_json }
         end
       else
         respond_to do |format|
@@ -54,7 +54,7 @@ module Api
         end
       end
     end
-    
+
     private
 
     def set_todo_list
