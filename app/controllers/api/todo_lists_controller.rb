@@ -13,7 +13,7 @@ module Api
 
     def show
       respond_to do |format|
-        format.json { render json: @todo_list.as_json }
+        format.json { render_success(@todo_list.as_json) }
       end
     end
 
@@ -22,11 +22,11 @@ module Api
 
       if @todo_list.save
         respond_to do |format|
-          format.json { render json: @todo_list.as_json }
+          format.json { render_success(@todo_list.as_json) }
         end
       else
         respond_to do |format|
-          format.json { render json: { error: @todo_list.errors } }
+          format.json { render_error(@todo_list.errors) }
         end
       end
     end
@@ -34,11 +34,11 @@ module Api
     def update
       if @todo_list.update(todo_list_params)
         respond_to do |format|
-          format.json { render json: @todo_list.as_json }
+          format.json { render_success(@todo_list.as_json) }
         end
       else
         respond_to do |format|
-          format.json { render json: { error: @todo_list.errors } }
+          format.json { render_error(@todo_list.errors) }
         end
       end
     end
@@ -46,11 +46,11 @@ module Api
     def destroy
       if @todo_list.destroy
         respond_to do |format|
-          format.json { render json: @todo_list.as_json }
+          format.json { render_success(@todo_list.as_json) }
         end
       else
         respond_to do |format|
-          format.json { render json: { error: @todo_list.errors } }
+          format.json { render_error(@todo_list.errors) }
         end
       end
     end
